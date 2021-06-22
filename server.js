@@ -3,7 +3,7 @@ const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
 
-const app = next({dev: true, dir: './default_theme_2' })
+const app = next({dev: true, dir: './with-next-translate' })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
