@@ -3,7 +3,7 @@ import Trans from 'next-translate/Trans'
 import useTranslation from 'next-translate/useTranslation'
 import Layout from '../components/Layout'
 
-export default function Home() {
+function Home() {
   const { t, lang } = useTranslation()
   const isRTL = lang === 'ar' || lang === 'he'
   const arrow = isRTL ? String.fromCharCode(8592) : String.fromCharCode(8594)
@@ -160,3 +160,5 @@ export default function Home() {
     </Layout>
   )
 }
+
+export default Home
