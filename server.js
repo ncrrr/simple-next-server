@@ -1,12 +1,13 @@
 // server.js
 const { createServer } = require('http')
 const { parse } = require('url')
-const next = require('next')
+const process = require('process');
+const path = require('path');
 
-const app = next({dev: true, dir: './with-next-translate' })
-const handle = app.getRequestHandler()
-
-app.prepare().then(() => {
+const startServer = async () => {
+    process.chdir(path.join(__dirname, 'with-next-translate'));
+    const handle = await require('./with-next-translate/a').getNext();
+    process.chdir(__dirname);
     createServer((req, res) => {
         // Be sure to pass `true` as the second argument to `url.parse`.
         // This tells it to parse the query portion of the URL.
@@ -24,4 +25,6 @@ app.prepare().then(() => {
         if (err) throw err
         console.log('> Ready on http://localhost:3000')
     })
-})
+};
+
+startServer();
